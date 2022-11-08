@@ -1,7 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
-class HomeAppBar extends StatelessWidget {
+class ProductAppBar extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HomeAppBar extends StatelessWidget {
             Icon(Icons.sort, color: Color(0xFF4C53A5)),
             Padding(
                 padding: EdgeInsets.only(left: 20),
-                child: Text("Redivivus",
+                child: Text("Product",
                     style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.bold,

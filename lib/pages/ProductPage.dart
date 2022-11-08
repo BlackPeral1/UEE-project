@@ -6,12 +6,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
 
-class HomePage extends StatefulWidget {
+class ProductPage extends StatefulWidget {
   @override
-  HomePageState createState() => HomePageState();
+  ProductPageState createState() => ProductPageState();
 }
 
-class HomePageState extends State<HomePage> {
+class ProductPageState extends State<ProductPage> {
   var currentIndex = 0;
   // This widget is the root of your application.
   @override
@@ -117,17 +117,7 @@ class HomePageState extends State<HomePage> {
             onTap: () {
               setState(() {
                 currentIndex = index;
-                if (currentIndex == 0) {
-                  Navigator.pushNamed(context, "cartPage");
-                } else if (currentIndex == 1) {
-                  Navigator.pushNamed(context, "cartPage");
-                } else if (currentIndex == 2) {
-                  Navigator.pushNamed(context, "cartPage");
-                } else if (currentIndex == 3) {
-                  Navigator.pushNamed(context, "cartPage");
-                }
-
-                // HapticFeedback.lightImpact();
+                HapticFeedback.lightImpact();
               });
             },
             splashColor: Colors.transparent,
