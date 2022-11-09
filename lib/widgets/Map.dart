@@ -17,6 +17,13 @@ class Map extends StatelessWidget {
           onSourceTapped: null,
         ),
       ],
+      children: [
+        TileLayer(
+          urlTemplate:
+              'https://maps.googleapis.com/maps/api/geocode/json?latlng={x},{y}&key=AIzaSyAePk9SYfZTMpAJZ7pOutFK_ixi72CzS2I',
+          userAgentPackageName: 'com.example.app',
+        ),
+      ],
     );
   }
 }

@@ -104,6 +104,72 @@ class RequestPageState extends State<RequestPage> {
                       ),
                     ),
                   ])),
+              Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 20,
+                  ),
+                  padding:
+                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(103, 120, 120, 120),
+                        blurRadius: 10.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          2.0, // Move to right 10  horizontally
+                          2.0, // Move to bottom 10 Vertically
+                        ),
+                      )
+                    ],
+                  ),
+                  child: Row(children: [
+                    Image.asset(
+                      "images/company2.png",
+                      height: 100,
+                      width: 100,
+                    ),
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Good Trash Systems",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: const Text(
+                              "Tell : 0112366824",
+                              style: TextStyle(fontSize: 15),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Color.fromARGB(255, 255, 255, 255),
+                              backgroundColor: Color(0xFF69B289),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(18)),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 15.0), // foreground
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, "reqDetailsPage");
+                            },
+                            child: Text('Arrange request'),
+                          )
+                        ],
+                      ),
+                    ),
+                  ])),
             ],
           ),
         ),
