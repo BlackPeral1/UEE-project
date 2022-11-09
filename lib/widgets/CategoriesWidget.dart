@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 class CategoriesWidget extends StatelessWidget {
   @override
@@ -7,27 +8,21 @@ class CategoriesWidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for (int i = 1; i < 8; i++)
+          for (int i = 0; i < 6; i++)
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                  color: Colors.greenAccent.withOpacity(.2), borderRadius: BorderRadius.circular(20)),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    // use i variable to chante the puc
-                    "images/$i.png",
-                    width: 40,
-                    height: 40,
-                  ),
                   Text(
-                    "Sandal",
+                    '${listOfCategories[i]}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
-                        color: Color(0xFF4C53A5)),
+                        color: PRIMARY_COLOR),
                   )
                 ],
               ),
@@ -36,4 +31,13 @@ class CategoriesWidget extends StatelessWidget {
       ),
     );
   }
+
+  List<String> listOfCategories = [
+    'All',
+    'Electric',
+    'Home & garden',
+    'Jewelry',
+    'Metal',
+    'Wooden',
+  ];
 }

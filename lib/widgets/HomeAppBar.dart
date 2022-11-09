@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:first_project/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -6,18 +7,18 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white,
-        padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-        child: Row(
-          children: [
-            Icon(Icons.sort, color: Color(0xFF4C53A5)),
+      color: Colors.white,
+      padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+      child: Column(
+        children: [
+          Row(children: [
             Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text("Redivivus",
+                padding: EdgeInsets.only(left: 10),
+                child: Text("All Products",
                     style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFAC53A5)))),
+                        color: Colors.white))),
             Spacer(),
             Badge(
               badgeColor: Colors.red,
@@ -26,19 +27,24 @@ class HomeAppBar extends StatelessWidget {
                 "3",
                 style: TextStyle(color: Colors.white),
               ),
-              child: InkWell(
-                onTap: () {
-                  print("cartPage");
-                  Navigator.pushNamed(context, "cartPage");
-                },
-                child: Icon(
-                  Icons.shopping_cart,
-                  size: 32,
-                  color: Color(0xFF44C53A5),
-                ),
-              ),
             ),
-          ],
-        ));
+          ]),
+          //Search widget
+          Container(
+              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Text("All Products",
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      color: PRIMARY_COLOR)))
+        ],
+      ),
+    );
   }
 }

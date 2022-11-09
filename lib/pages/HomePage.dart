@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
 
+import '../constants.dart';
+
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
@@ -24,58 +26,9 @@ class HomePageState extends State<HomePage> {
           Container(
             // height: 500,
             padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
-                color: Color(0xFFEDECF2),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35))),
+            decoration: BoxDecoration(color: Color(0xFFEDECF2)),
             child: Column(
               children: [
-                //Search widget
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 5),
-                        height: 50,
-                        width: 300,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Search here..."),
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.camera_alt,
-                        size: 27,
-                        color: Color(0xFF4C53A5),
-                      ),
-                    ],
-                  ),
-                ),
-                //Categories
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 20,
-                    horizontal: 10,
-                  ),
-                  child: Text(
-                    "Categories",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF4C53A5)),
-                  ),
-                ),
                 // Categories
                 CategoriesWidget(),
                 //Items
@@ -118,9 +71,9 @@ class HomePageState extends State<HomePage> {
               setState(() {
                 currentIndex = index;
                 if (currentIndex == 0) {
-                  Navigator.pushNamed(context, "cartPage");
+                  Navigator.pushNamed(context, "/");
                 } else if (currentIndex == 1) {
-                  Navigator.pushNamed(context, "cartPage");
+                  Navigator.pushNamed(context, "productPage");
                 } else if (currentIndex == 2) {
                   Navigator.pushNamed(context, "cartPage");
                 } else if (currentIndex == 3) {

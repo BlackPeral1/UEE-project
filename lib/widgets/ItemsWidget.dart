@@ -4,7 +4,7 @@ class ItemsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      childAspectRatio: 0.68,
+      childAspectRatio: 0.84,
       //disalbes the scroll functionality of gridview
       //then it will scroll  in list view of home page
       physics: NeverScrollableScrollPhysics(),
@@ -24,31 +24,12 @@ class ItemsWidget extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Color(0xFF4C53A5),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Text(
-                        "-50%",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Icon(Icons.favorite_border, color: Colors.red)
-                  ],
-                ),
                 InkWell(
                   onTap: () {
                     Navigator.pushNamed(context, "itemPage");
                   },
                   child: Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(5),
                     child: Image.asset(
                       "images/$i.png",
                       height: 120,
@@ -56,13 +37,14 @@ class ItemsWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                Divider(color: Colors.black),
                 Container(
                   padding: EdgeInsets.only(bottom: 8),
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Product Title",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 12,
                       color: Color(0xFF4C53A5),
                       fontWeight: FontWeight.bold,
                     ),
@@ -71,24 +53,20 @@ class ItemsWidget extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text("Write description of product",
-                      style: TextStyle(fontSize: 15, color: Color(0xFF4C53A5))),
+                      style: TextStyle(fontSize: 12, color: Color(0xFF4C53A5))),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         "\$55",
                         style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 10,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF4C53A5)),
                       ),
-                      Icon(
-                        Icons.shopping_cart_checkout,
-                        color: Color(0xFF4C53AD),
-                      )
                     ],
                   ),
                 )
