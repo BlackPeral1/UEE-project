@@ -75,7 +75,7 @@ class HomePageState extends State<HomePage> {
                 } else if (currentIndex == 1) {
                   Navigator.pushNamed(context, "productPage");
                 } else if (currentIndex == 2) {
-                  Navigator.pushNamed(context, "cartPage");
+                  Navigator.pushNamed(context, "requestPage");
                 } else if (currentIndex == 3) {
                   Navigator.pushNamed(context, "cartPage");
                 }

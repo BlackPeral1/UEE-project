@@ -4,55 +4,110 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
-import '../widgets/ProductAppBar.dart';
 
-class ProductPage extends StatefulWidget {
+class RequestPage extends StatefulWidget {
   @override
-  ProductPageState createState() => ProductPageState();
+  RequestPageState createState() => RequestPageState();
 }
 
-class ProductPageState extends State<ProductPage> {
-  var currentIndex = 1;
+class RequestPageState extends State<RequestPage> {
+  var currentIndex = 2;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: ListView(
-        children: [
-          ProductAppBar(),
-          Container(
-            // height: 500,
-            padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
-              color: Color(0xFFEDECF2),
+      body: ListView(children: [
+        Container(
+          height: 700,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/reqbg.png"),
+              alignment: Alignment.topCenter,
             ),
-            child: Column(
-              children: [
-                //Search widget
-
-                //Categories
-                Container(
-                  alignment: Alignment.centerLeft,
+          ),
+          child: ListView(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 60, left: 20, bottom: 30),
+                child: const Text("Company List",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.black)),
+              ),
+              Container(
                   margin: EdgeInsets.symmetric(
-                    vertical: 0,
-                    horizontal: 10,
+                    horizontal: 20,
+                    vertical: 20,
                   ),
-                ),
-                // Categories
-                CategoriesWidget(),
-                //Items
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                ),
-                //Items widget
-                ItemsWidget()
-              ],
-            ),
-          )
-        ],
-      ),
+                  padding:
+                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color.fromARGB(103, 120, 120, 120),
+                        blurRadius: 10.0, // soften the shadow
+                        spreadRadius: 2.0, //extend the shadow
+                        offset: Offset(
+                          2.0, // Move to right 10  horizontally
+                          2.0, // Move to bottom 10 Vertically
+                        ),
+                      )
+                    ],
+                  ),
+                  child: Row(children: [
+                    Image.asset(
+                      "images/company1.png",
+                      height: 100,
+                      width: 100,
+                    ),
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Casella Waste Systems",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: const Text(
+                              "Tell : 0112365896",
+                              style: TextStyle(fontSize: 15),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Color.fromARGB(255, 255, 255, 255),
+                              backgroundColor: Color(0xFF69B289),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(18)),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 15.0), // foreground
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, "reqDetailsPage");
+                            },
+                            child: Text('Arrange request'),
+                          )
+                        ],
+                      ),
+                    ),
+                  ])),
+            ],
+          ),
+        ),
+      ]),
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .05),
         height: displayWidth * .155,
@@ -62,7 +117,7 @@ class ProductPageState extends State<ProductPage> {
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
               blurRadius: 30,
-              offset: Offset(0, 10),
+              offset: const Offset(0, 10),
             ),
           ],
           borderRadius: BorderRadius.circular(20),
