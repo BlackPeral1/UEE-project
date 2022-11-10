@@ -71,13 +71,13 @@ class HomePageState extends State<HomePage> {
               setState(() {
                 currentIndex = index;
                 if (currentIndex == 0) {
-                  Navigator.pushNamed(context, "/");
+                  Navigator.pushNamed(context, "home");
                 } else if (currentIndex == 1) {
                   Navigator.pushNamed(context, "productPage");
                 } else if (currentIndex == 2) {
                   Navigator.pushNamed(context, "requestPage");
                 } else if (currentIndex == 3) {
-                  Navigator.pushNamed(context, "cartPage");
+                  Navigator.pushNamed(context, "accountPage");
                 }
 
                 // HapticFeedback.lightImpact();

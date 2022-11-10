@@ -105,7 +105,7 @@ class LoginPage extends StatelessWidget {
                         horizontal: 15.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "productPage");
+                    Navigator.pushNamed(context, "home");
                   },
                   child: Text(
                     'Sign in',

@@ -109,7 +109,7 @@ class ReqDetailsPage extends StatelessWidget {
                     ListTileControlAffinity.leading, //  <-- leading Checkbox
               ),
               Container(
-                margin: const EdgeInsets.only(right: 20, left: 20),
+                margin: const EdgeInsets.only(right: 20, left: 20, top: 30),
                 child: TextButton(
                   style: TextButton.styleFrom(
                     primary: Color.fromARGB(255, 255, 255, 255),
@@ -123,7 +123,10 @@ class ReqDetailsPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, "mapPage");
                   },
-                  child: Text('Next'),
+                  child: Text(
+                    'Next',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ],
