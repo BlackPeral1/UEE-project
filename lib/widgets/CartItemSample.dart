@@ -1,3 +1,4 @@
+import 'package:first_project/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,7 @@ class CartItemSamples extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (int i = 1; i < 4;i++)
+        for (int i = 1; i < 4; i++)
           Container(
             height: 110,
             margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -19,7 +20,7 @@ class CartItemSamples extends StatelessWidget {
                   value: "",
                   groupValue: "",
                   onChanged: (index) {},
-                  activeColor: Color(0xFF4C53A5),
+                  activeColor: PRIMARY_COLOR,
                 ),
                 Container(
                   height: 70,
@@ -35,16 +36,16 @@ class CartItemSamples extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Product Title",
+                      Text("Quality Tahitian  ",
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF4C53A5))),
+                              color: Colors.black)),
                       Text("\$55",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF4C53A5),
+                            color: Colors.black,
                           ))
                     ],
                   ),
@@ -65,7 +66,7 @@ class CartItemSamples extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: PRIMARY_COLOR,
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
@@ -76,24 +77,25 @@ class CartItemSamples extends StatelessWidget {
                                 ]),
                             child: Icon(
                               CupertinoIcons.plus,
+                              color: Colors.white,
                               size: 18,
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
-                              "01",
+                              "1",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFF4C53A5),
+                                color: Colors.black,
                               ),
                             ),
                           ),
                           Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: PRIMARY_COLOR,
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
@@ -104,6 +106,7 @@ class CartItemSamples extends StatelessWidget {
                                 ]),
                             child: Icon(
                               CupertinoIcons.minus,
+                              color: Colors.white,
                               size: 18,
                             ),
                           )

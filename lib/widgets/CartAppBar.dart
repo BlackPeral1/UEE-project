@@ -19,15 +19,13 @@ class CartAppBar extends StatelessWidget {
               color: Color(0xFF4C53A5),
             ),
           ),
-
           Padding(
-              padding: EdgeInsets.only(left:120),
+              padding: EdgeInsets.only(left: 120),
               child: Text("My Cart",
                   style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5)))),
-       
+                      color: Colors.black))),
         ],
       ),
     );
