@@ -1,3 +1,4 @@
+import 'package:first_project/constants.dart';
 import 'package:flutter/material.dart';
 
 class CartAppBar extends StatelessWidget {
@@ -16,7 +17,7 @@ class CartAppBar extends StatelessWidget {
             child: Icon(
               Icons.arrow_back_ios_new_sharp,
               size: 30,
-              color: Color(0xFF4C53A5),
+              color: PRIMARY_COLOR,
             ),
           ),
           Padding(

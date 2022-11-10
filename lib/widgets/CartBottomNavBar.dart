@@ -1,3 +1,4 @@
+import 'package:first_project/constants.dart';
 import 'package:flutter/material.dart';
 
 class CartBottomNavBar extends StatelessWidget {
@@ -16,7 +17,7 @@ class CartBottomNavBar extends StatelessWidget {
                 Text(
                   "Total",
                   style: TextStyle(
-                    color: Color(0xFF4C53A5),
+                    color: Colors.black,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
@@ -25,7 +26,7 @@ class CartBottomNavBar extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.red))
+                        color: Colors.black))
               ],
             ),
             Container(
@@ -33,7 +34,7 @@ class CartBottomNavBar extends StatelessWidget {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: Color(0xFF4C53A5),
+                  color: PRIMARY_COLOR,
                   borderRadius: BorderRadius.circular(20)),
               child: Text(
                 "Check out",
