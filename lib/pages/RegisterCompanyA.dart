@@ -6,7 +6,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../widgets/ItemAppBar.dart';
 import '../widgets/ItemsBottomNavBar.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterCompanyA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +24,8 @@ class LoginPage extends StatelessWidget {
           child: ListView(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 180, left: 20),
-                child: const Text("Sign in ",
+                margin: const EdgeInsets.only(top: 80, left: 20),
+                child: const Text("Register",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 36,
@@ -33,13 +33,26 @@ class LoginPage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20),
-                child: const Text("please sign in to continue ",
+                child: const Text("Register your account",
                     style: TextStyle(
                         fontSize: 16, color: Color.fromARGB(255, 46, 46, 46))),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 30, left: 20),
-                child: const Text("Email", style: TextStyle(fontSize: 16)),
+                margin: const EdgeInsets.only(top: 20),
+                alignment: Alignment.center,
+                child: const Text(
+                  "Company Detalis",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 46, 46, 46),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child:
+                    const Text("Company Name", style: TextStyle(fontSize: 16)),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -54,13 +67,14 @@ class LoginPage extends StatelessWidget {
                 child: TextFormField(
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter your note',
+                    hintText: 'Company Name',
                   ),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 30, left: 20),
-                child: const Text("Password", style: TextStyle(fontSize: 16)),
+                margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child:
+                    const Text("Company Email", style: TextStyle(fontSize: 16)),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -75,25 +89,56 @@ class LoginPage extends StatelessWidget {
                 child: TextFormField(
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter your note',
+                    hintText: 'Company Email',
                   ),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(right: 20, left: 20),
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Color(0xFF69B289), // foreground
+                margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: const Text("Company Mobile Number",
+                    style: TextStyle(fontSize: 16)),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  border: Border.all(
+                      color: Colors.grey,
+                      style: BorderStyle.solid,
+                      width: 0.80),
+                ),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Company Mobile Number',
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, "Forgot Password");
-                  },
-                  child: Text('Forgot Password'),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(right: 20, left: 20),
+                margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: const Text("Company Address",
+                    style: TextStyle(fontSize: 16)),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  border: Border.all(
+                      color: Colors.grey,
+                      style: BorderStyle.solid,
+                      width: 0.80),
+                ),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Company Address',
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
                 child: TextButton(
                   style: TextButton.styleFrom(
                     primary: Color.fromARGB(255, 255, 255, 255),
@@ -105,10 +150,10 @@ class LoginPage extends StatelessWidget {
                         horizontal: 15.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "home");
+                    Navigator.pushNamed(context, "registerCompanyB");
                   },
                   child: Text(
-                    'Sign in',
+                    'Next',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -122,20 +167,13 @@ class LoginPage extends StatelessWidget {
         margin: const EdgeInsets.only(left: 80, right: 80),
         alignment: Alignment.center,
         child: Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Do not have an account?',
-              textAlign: TextAlign.center,
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Color(0xFF69B289), // foreground
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, "registerPage");
-              },
-              child: Text('Register'),
-            ),
+            Icon(Icons.circle, color: Color(0xFF69B289), size: 18),
+            Icon(Icons.circle,
+                color: Color.fromARGB(255, 155, 167, 160), size: 18),
           ],
         ),
       ),

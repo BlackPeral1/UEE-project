@@ -10,9 +10,13 @@ import 'package:first_project/pages/HomePage.dart';
 import 'package:first_project/pages/AccountPage.dart';
 import 'package:first_project/pages/CartPage.dart';
 import 'package:first_project/pages/LoginPage.dart';
+import 'package:first_project/pages/RegisterPage.dart';
 import 'package:first_project/pages/ContractReqDetailsPage.dart';
 import 'package:first_project/pages/CompanyList.dart';
 import 'package:first_project/pages/MapComPage.dart';
+import 'package:first_project/pages/RegisterCompanyA.dart';
+import 'package:first_project/pages/RegisterCompanyB.dart';
+import 'package:first_project/pages/RegisterCustomer.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,11 +38,15 @@ class MyApp extends StatelessWidget {
         "reqDetailsPage": (context) => ReqDetailsPage(),
         "mapPage": (context) => MapPage(),
         "loginPage": (context) => LoginPage(),
+        "registerPage": (context) => RegisterPage(),
         "accountPage": (context) => AccountPage(),
         "contractReqDetailsPage": (context) => ContractReqDetailsPage(),
         "companyList": (context) => CompanyList(),
         "mapComPage": (context) => MapComPage(),
-        "itemComparePage": (context) => ItemComparePage()
+        "itemComparePage": (context) => ItemComparePage(),
+        "registerCompanyA": (context) => RegisterCompanyA(),
+        "registerCompanyB": (context) => RegisterCompanyB(),
+        "registerCustomer": (context) => RegisterCustomer(),
       },
     );
   }

@@ -53,7 +53,7 @@ class SpalshPage extends StatelessWidget {
                         horizontal: 100.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "loginPage");
+                    Navigator.pushNamed(context, "registerPage");
                   },
                   child: const Text(
                     'Get started',
