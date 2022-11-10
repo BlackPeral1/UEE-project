@@ -65,12 +65,7 @@ class MapComPage extends StatelessWidget {
                         horizontal: 100.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Fluttertoast.showToast(
-                      msg: "Requested Successful",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                    );
-                    Navigator.pushNamed(context, "accountPage");
+                    showAlertDialog(context);
                   },
                   child: const Text(
                     'Assign Contract',
@@ -82,4 +77,42 @@ class MapComPage extends StatelessWidget {
           ),
         ));
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("No"),
+    onPressed: () {},
+  );
+  Widget continueButton = TextButton(
+    child: Text("Yes"),
+    onPressed: () {
+      Fluttertoast.showToast(
+        msg: "Requested Successful",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      Navigator.pushNamed(context, "accountPage");
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Confirm Action"),
+    content: Text(
+        "Contractors will arrive weekly at the given time. Do you want to proceed?"),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
