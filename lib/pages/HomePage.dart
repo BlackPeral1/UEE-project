@@ -20,36 +20,49 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: ListView(
-        children: [
-          HomeAppBar(),
-          Container(
-            // height: 500,
-            padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(color: Color(0xFFEDECF2)),
-            child: Column(
-              children: [
-                // Categories
-                CategoriesWidget(),
-                //Items
-                Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("Propular Items",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: Colors.black)),
-                        ])),
-                //Items widget
-                ItemsWidget()
-              ],
+      body: SafeArea(
+        child: Container(
+          height: 700,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/homebg.png"),
+              alignment: Alignment.topCenter,
             ),
-          )
-        ],
+          ),
+          child: ListView(
+            children: [
+              HomeAppBar(),
+              Container(
+                // height: 500,
+                padding: EdgeInsets.only(top: 15),
+                decoration: BoxDecoration(color: Color(0xFFEDECF2)),
+                child: Column(
+                  children: [
+                    // Categories
+                    CategoriesWidget(),
+                    //Items
+                    Container(
+                        alignment: Alignment.centerLeft,
+                        margin:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Propular Items",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Colors.black)),
+                            ])),
+                    //Items widget
+                    ItemsWidget()
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .05),

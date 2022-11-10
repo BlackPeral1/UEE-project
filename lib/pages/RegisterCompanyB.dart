@@ -146,7 +146,7 @@ class RegisterCompanyB extends StatelessWidget {
                         horizontal: 15.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "home");
+                    Navigator.pushNamed(context, "addProduct");
                   },
                   child: Text(
                     'Register',

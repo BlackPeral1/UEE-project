@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../model/product.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ProductItemTile extends StatelessWidget {
   final ProductModel product;
@@ -137,9 +138,10 @@ class ProductItemTile extends StatelessWidget {
                               onPressed: () {},
                               icon: const Icon(Icons.edit,
                                   size: 20, color: Colors.black),
-                            ),IconButton(
+                            ),
+                            IconButton(
                               onPressed: () {
-
+                                showAlertDialog(context);
                               },
                               icon: const Icon(Icons.delete,
                                   size: 20, color: Colors.black),
@@ -171,4 +173,41 @@ class ProductItemTile extends StatelessWidget {
       ),
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancel"),
+    onPressed: () {},
+  );
+  Widget continueButton = TextButton(
+    child: Text("Delete"),
+    onPressed: () {
+      Fluttertoast.showToast(
+        msg: "Deleted Successful",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      Navigator.pushNamed(context, "productlist");
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Confirm Action"),
+    content: Text("Are You Sure You Want To Delete Product?"),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
