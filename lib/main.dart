@@ -1,3 +1,4 @@
+import 'package:first_project/pages/ItemComparePage.dart';
 import 'package:first_project/pages/ItemPage.dart';
 import 'package:first_project/pages/ProductPage.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => HomePage(),
         "cartPage": (context) => CartPage(),
         "itemPage": (context) => ItemPage(),
-        "productPage" : (context) => ProductPage()
+        "productPage": (context) => ProductPage(),
+        "itemComparePage": (context) => ItemComparePage()
       },
     );
   }
