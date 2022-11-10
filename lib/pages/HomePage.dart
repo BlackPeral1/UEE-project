@@ -33,14 +33,17 @@ class HomePageState extends State<HomePage> {
                 CategoriesWidget(),
                 //Items
                 Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  child: Text("Best Selling",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          color: Color(0xFF4C53A5))),
-                ),
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Propular Items",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.black)),
+                        ])),
                 //Items widget
                 ItemsWidget()
               ],

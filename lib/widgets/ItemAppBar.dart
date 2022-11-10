@@ -1,3 +1,4 @@
+import 'package:first_project/constants.dart';
 import 'package:flutter/material.dart';
 
 class ItemAppBar extends StatelessWidget {
@@ -15,18 +16,10 @@ class ItemAppBar extends StatelessWidget {
             child: Icon(
               Icons.arrow_back_ios_new_sharp,
               size: 30,
-              color: Color(0xFF4C53A5),
+              color: PRIMARY_COLOR,
             ),
           ),
-          Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text("Product",
-                  style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5)))),
           Spacer(),
-          Icon(Icons.favorite, size: 30, color: Colors.red)
         ],
       ),
     );

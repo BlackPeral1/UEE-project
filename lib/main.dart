@@ -1,3 +1,4 @@
+import 'package:first_project/pages/ItemComparePage.dart';
 import 'package:first_project/pages/ItemPage.dart';
 import 'package:first_project/pages/ProductPage.dart';
 import 'package:first_project/pages/RequestPage.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         "contractReqDetailsPage": (context) => ContractReqDetailsPage(),
         "companyList": (context) => CompanyList(),
         "mapComPage": (context) => MapComPage(),
+        "itemComparePage": (context) => ItemComparePage()
       },
     );
   }
