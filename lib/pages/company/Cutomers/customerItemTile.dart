@@ -396,8 +396,6 @@
 //   }
 // }
 
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -472,11 +470,10 @@ class CustomerItemTile extends StatelessWidget {
                           title: Text(
                             'Name    :',
                             style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'san-serif',
-                              color: Color(0xff4f4e4e)
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'san-serif',
+                                color: Color(0xff4f4e4e)),
                           ),
                         ),
                       ),
@@ -486,10 +483,9 @@ class CustomerItemTile extends StatelessWidget {
                           title: Text(
                             'Email    :',
                             style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                                color: Color(0xff4f4e4e)
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff4f4e4e)),
                           ),
                         ),
                       ),
@@ -511,10 +507,9 @@ class CustomerItemTile extends StatelessWidget {
                           title: Text(
                             'Address:',
                             style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                                color: Color(0xff4f4e4e)
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff4f4e4e)),
                           ),
                         ),
                       ),
@@ -522,8 +517,6 @@ class CustomerItemTile extends StatelessWidget {
                   ),
                 ),
               ),
-
-
 
               Expanded(
                 flex: 4,
@@ -537,10 +530,9 @@ class CustomerItemTile extends StatelessWidget {
                           title: Text(
                             _name,
                             style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                                color: Color(0xff2f6a66)
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff2f6a66)),
                           ),
                         ),
                       ),
@@ -550,10 +542,9 @@ class CustomerItemTile extends StatelessWidget {
                           title: Text(
                             _email,
                             style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                                color: Color(0xff2f6a66)
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff2f6a66)),
                           ),
                         ),
                       ),
@@ -578,10 +569,9 @@ class CustomerItemTile extends StatelessWidget {
                             maxLines: 1,
                             softWrap: false,
                             style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                                color: Color(0xff2f6a66)
-                            ),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff2f6a66)),
                           ),
                         ),
                       ),
@@ -592,21 +582,18 @@ class CustomerItemTile extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Container(
-                  alignment: Alignment.topRight,
+                  alignment: Alignment.center,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Expanded(
-                        flex: 2,
-                        child: Row(
-                          children: [
-                           IconButton(
-                              onPressed: () {
-
-                              },
-                              icon: const Icon(Icons.cancel,
-                                  size: 20, color: Colors.black, ),
-                            ),
-                          ],
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.cancel,
+                            size: 20,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                       // Expanded(
@@ -620,14 +607,23 @@ class CustomerItemTile extends StatelessWidget {
                       //   ),
                       // ),
 
-                      Expanded(
-                        child: TextButton(
-                          child: const Text(
-                            'Button',
-                            style: TextStyle(fontSize: 20.0),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          primary: Color.fromARGB(255, 255, 255, 255),
+                          backgroundColor: Color(0xFF69B289),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
                           ),
-                          onPressed: () {},
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5.0, vertical: 1), // foreground
                         ),
+                        child: const Text(
+                          'Approve',
+                          style: TextStyle(fontSize: 16.0, color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, "approved_customers");
+                        },
                       ),
                     ],
                   ),

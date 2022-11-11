@@ -151,9 +151,9 @@ class RegisterPage extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         height: 80,
-        margin: const EdgeInsets.only(left: 80, right: 80),
         alignment: Alignment.center,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Already have an account?',

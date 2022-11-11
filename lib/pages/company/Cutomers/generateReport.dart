@@ -37,6 +37,7 @@ class _GenerateReportState extends State<GenerateReport> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("REDVIUS"),
+          backgroundColor: Color(0xFF69B289),
           centerTitle: true,
           actions: [
             IconButton(
@@ -45,9 +46,32 @@ class _GenerateReportState extends State<GenerateReport> {
             ),
           ],
         ),
-        body: ListView.builder(
-          itemCount: customer_list.length,
-          itemBuilder: _itemBuilder,
+        body: Column(
+          children: <Widget>[
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: customer_list.length,
+              itemBuilder: _itemBuilder,
+            ),
+            Container(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  primary: Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: Color(0xFF69B289),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 12), // background
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, "");
+                },
+                child: Text(
+                  'GENERATE REPORT',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ],
         ),
         bottomNavigationBar: Container(
           margin: EdgeInsets.all(displayWidth * .05),
@@ -187,7 +211,7 @@ class _GenerateReportState extends State<GenerateReport> {
     Icons.add,
     Icons.list,
     Icons.person,
-    Icons.start,
+    Icons.assessment,
   ];
 
   List<String> listOfStrings = [

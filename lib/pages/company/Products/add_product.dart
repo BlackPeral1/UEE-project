@@ -16,6 +16,7 @@ class _AddProductState extends State<AddProduct> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("REDVIUS"),
+        backgroundColor: Color(0xFF69B289),
         centerTitle: true,
         actions: [
           IconButton(
@@ -51,7 +52,13 @@ class _AddProductState extends State<AddProduct> {
                     fillColor: Colors.white,
                     filled: true,
                     border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green)),
+                      borderSide: BorderSide(color: Colors.green),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     helperText: '',
                     labelText: "Name",
                     focusColor: Colors.lightGreenAccent,
@@ -67,6 +74,11 @@ class _AddProductState extends State<AddProduct> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
                     helperText: '',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     labelText: "Product Code",
                     focusColor: Colors.lightGreenAccent,
                     focusedBorder: OutlineInputBorder(
@@ -81,6 +93,11 @@ class _AddProductState extends State<AddProduct> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
                     helperText: '',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     labelText: "Product Image",
                     focusColor: Colors.lightGreenAccent,
                     focusedBorder: OutlineInputBorder(
@@ -95,6 +112,11 @@ class _AddProductState extends State<AddProduct> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
                     helperText: '',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     labelText: "Product Category",
                     focusColor: Colors.lightGreenAccent,
                     focusedBorder: OutlineInputBorder(
@@ -109,6 +131,11 @@ class _AddProductState extends State<AddProduct> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
                     helperText: '',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     labelText: "Sub Product Category",
                     focusColor: Colors.lightGreenAccent,
                     focusedBorder: OutlineInputBorder(
@@ -123,6 +150,11 @@ class _AddProductState extends State<AddProduct> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
                     helperText: '',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     labelText: "Product Price",
                     focusColor: Colors.lightGreenAccent,
                     focusedBorder: OutlineInputBorder(
@@ -137,6 +169,11 @@ class _AddProductState extends State<AddProduct> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
                     helperText: '',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 41, 41, 41)),
+                    ),
                     labelText: "Product Description",
                     focusColor: Colors.lightGreenAccent,
                     focusedBorder: OutlineInputBorder(
@@ -289,7 +326,7 @@ class _AddProductState extends State<AddProduct> {
     Icons.add,
     Icons.list,
     Icons.person,
-    Icons.format_align_right,
+    Icons.assessment,
   ];
 
   List<String> listOfStrings = [

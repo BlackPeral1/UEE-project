@@ -36,6 +36,7 @@ class _ApprovedCustomersState extends State<ApprovedCustomers> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("REDVIUS"),
+          backgroundColor: Color(0xFF69B289),
           centerTitle: true,
           actions: [
             IconButton(
@@ -232,7 +233,7 @@ class _ApprovedCustomersState extends State<ApprovedCustomers> {
     Icons.add,
     Icons.list,
     Icons.person,
-    Icons.start,
+    Icons.assessment,
   ];
 
   List<String> listOfStrings = [

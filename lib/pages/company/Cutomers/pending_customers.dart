@@ -34,65 +34,74 @@ class _PendingCustomersState extends State<PendingCustomers> {
     double displayWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("REDVIUS"),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () {},
+        body: Container(
+          height: 700,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/custbg.png"),
+              alignment: Alignment.topCenter,
             ),
-          ],
-        ),
-        body: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Color.fromARGB(255, 255, 255, 255),
-                    backgroundColor: Color(0xFF69B289),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18)),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 12), // background
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, "pending_customers");
-                  },
-                  child: Text(
-                    'Pending',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
+          ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: 60, bottom: 10),
+                child: Text(
+                  'Customers',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Color.fromARGB(255, 255, 255, 255),
-                    backgroundColor: Color.fromARGB(255, 159, 185, 170),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18)),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Color.fromARGB(255, 255, 255, 255),
+                      backgroundColor: Color(0xFF69B289),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(18)),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 12), // background
                     ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 12), // background
+                    onPressed: () {
+                      Navigator.pushNamed(context, "pending_customers");
+                    },
+                    child: Text(
+                      'Pending',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, "approved_customers");
-                  },
-                  child: Text(
-                    'Approved',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Color.fromARGB(255, 255, 255, 255),
+                      backgroundColor: Color.fromARGB(255, 159, 185, 170),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(18)),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 12), // background
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, "declined_customers");
+                    },
+                    child: Text(
+                      'Declined',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: customer_list.length,
-              itemBuilder: _itemBuilder,
-            ),
-          ],
+                ],
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: customer_list.length,
+                itemBuilder: _itemBuilder,
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: Container(
           margin: EdgeInsets.all(displayWidth * .05),
@@ -232,7 +241,7 @@ class _PendingCustomersState extends State<PendingCustomers> {
     Icons.add,
     Icons.list,
     Icons.person,
-    Icons.start,
+    Icons.assessment,
   ];
 
   List<String> listOfStrings = [

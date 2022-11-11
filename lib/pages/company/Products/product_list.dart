@@ -56,6 +56,7 @@ class _AllProductsState extends State<AllProducts> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("REDVIUS"),
+          backgroundColor: Color(0xFF69B289),
           centerTitle: true,
           actions: [
             IconButton(
@@ -210,7 +211,7 @@ class _AllProductsState extends State<AllProducts> {
     Icons.add,
     Icons.list,
     Icons.person,
-    Icons.start,
+    Icons.assessment,
   ];
 
   List<String> listOfStrings = [

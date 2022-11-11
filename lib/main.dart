@@ -19,11 +19,13 @@ import 'package:first_project/pages/RegisterCompanyB.dart';
 import 'package:first_project/pages/RegisterCustomer.dart';
 
 import 'package:first_project/pages/company/Products/update_product.dart';
+import 'package:first_project/pages/company/Products/update_product.dart';
 import 'package:first_project/pages/company/Products/add_product.dart';
 import 'package:first_project/pages/company/Products/product_list.dart';
 import 'package:first_project/pages/company/Cutomers/pending_customers.dart';
 import 'package:first_project/pages/company/Cutomers/approved_customers.dart';
 import 'package:first_project/pages/company/Cutomers/generateReport.dart';
+import 'package:first_project/pages/company/Cutomers/declined_customers.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,6 +61,7 @@ class MyApp extends StatelessWidget {
         "productlist": (context) => AllProducts(),
         "pending_customers": (context) => PendingCustomers(),
         "approved_customers": (context) => ApprovedCustomers(),
+        "declined_customers": (context) => DeclinedCustomers(),
       },
     );
   }

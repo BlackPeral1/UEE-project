@@ -35,54 +35,52 @@ class SpalshPage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomAppBar(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-            height: 160,
-            width: double.infinity,
-            child: Column(
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Color.fromARGB(255, 255, 255, 255),
-                    backgroundColor: Color(0xFF69B289),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(18)),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 100.0, vertical: 12), // background
+        bottomNavigationBar: Container(
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+          height: 160,
+          width: double.infinity,
+          child: Column(
+            children: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  primary: Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: Color(0xFF69B289),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(18)),
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, "registerPage");
-                  },
-                  child: const Text(
-                    'Get started',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 100.0, vertical: 12), // background
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 50, right: 50),
-                  alignment: Alignment.center,
-                  child: Row(
-                    children: [
-                      Text(
-                        'Already have an account? ',
-                        textAlign: TextAlign.center,
+                onPressed: () {
+                  Navigator.pushNamed(context, "registerPage");
+                },
+                child: const Text(
+                  'Get started',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have an account? ',
+                      textAlign: TextAlign.center,
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Color(0xFF69B289), // foreground
                       ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          primary: Color(0xFF69B289), // foreground
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, "loginPage");
-                        },
-                        child: Text('Sign in'),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, "loginPage");
+                      },
+                      child: Text('Sign in'),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ));
   }
