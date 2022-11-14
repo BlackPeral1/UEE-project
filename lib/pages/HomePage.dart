@@ -7,13 +7,14 @@ import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
 
 import '../constants.dart';
-
+import 'globals.dart' as globals;
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
+  final coin = globals.coin;
   var currentIndex = 0;
   // This widget is the root of your application.
   @override

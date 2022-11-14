@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/pages/company/Products/ProductItemTile.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class AllProducts extends StatefulWidget {
 class _AllProductsState extends State<AllProducts> {
   List<ProductModel> product_list = [
     ProductModel(
+        id: 'Soft Drink Plastic Bottle',
         name: 'Soft Drink Plastic Bottle',
         code: '#B001',
         image:
@@ -23,6 +25,7 @@ class _AllProductsState extends State<AllProducts> {
         description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
     ProductModel(
+        id: 'Liquid Soap Bottle',
         name: 'Liquid Soap Bottle',
         code: '#B001',
         image:
@@ -33,6 +36,7 @@ class _AllProductsState extends State<AllProducts> {
         description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
     ProductModel(
+        id: 'Conditioner Bottle',
         name: 'Conditioner Bottle',
         code: '#B001',
         image:
@@ -61,13 +65,30 @@ class _AllProductsState extends State<AllProducts> {
           actions: [
             IconButton(
               icon: const Icon(Icons.person),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/");
+              },
             ),
           ],
         ),
-        body: ListView.builder(
-          itemCount: product_list.length,
-          itemBuilder: _itemBuilder,
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('products').snapshots(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+            product_list = streamSnapshot.data!.docs
+                .map((e) => ProductModel(
+                    id: e.id,
+                    name: e['name'],
+                    code: e['code'],
+                    image: e['image'],
+                    category: e['category'],
+                    subcategory: e['subcategory'],
+                    price: e['price'],
+                    description: e['description']))
+                .toList();
+            return ListView.builder(
+                itemCount: streamSnapshot.data?.docs.length,
+                itemBuilder: _itemBuilder);
+          },
         ),
         bottomNavigationBar: Container(
           margin: EdgeInsets.all(displayWidth * .05),
@@ -196,6 +217,7 @@ class _AllProductsState extends State<AllProducts> {
   Widget _itemBuilder(BuildContext context, int index) {
     return ProductItemTile(
       product: ProductModel(
+        id: product_list[index].id,
         name: product_list[index].name,
         code: product_list[index].code,
         image: product_list[index].image,

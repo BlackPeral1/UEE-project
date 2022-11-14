@@ -1,4 +1,5 @@
 import 'package:clippy_flutter/arc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -6,7 +7,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../widgets/ItemAppBar.dart';
 import '../widgets/ItemsBottomNavBar.dart';
 
+import 'globals.dart' as globals;
+
 class LoginPage extends StatelessWidget {
+  TextEditingController email = TextEditingController();
+
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +58,10 @@ class LoginPage extends StatelessWidget {
                       width: 0.80),
                 ),
                 child: TextFormField(
+                  controller: email,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter your note',
+                    hintText: 'Enter your Email',
                   ),
                 ),
               ),
@@ -73,9 +80,10 @@ class LoginPage extends StatelessWidget {
                       width: 0.80),
                 ),
                 child: TextFormField(
+                  controller: password,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter your note',
+                    hintText: 'Enter your password',
                   ),
                 ),
               ),
@@ -105,7 +113,71 @@ class LoginPage extends StatelessWidget {
                         horizontal: 15.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, "home");
+                    globals.name = 'asdsad';
+                    FirebaseFirestore.instance
+                        .collection('customers')
+                        .where('email', isEqualTo: email.text)
+                        .where('password', isEqualTo: password.text)
+                        .get()
+                        .then((snapshot) => {
+                              // if (snapshot.docs[0].id == null)
+                              //   {
+                              //     globals.isLoggedIn = false,
+                              //     showDialog(
+                              //       context: context,
+                              //       builder: (BuildContext context) {
+                              //         return AlertDialog(
+                              //           title: Text("Error"),
+                              //           content:
+                              //               Text("Invalid email or password"),
+                              //           actions: [
+                              //             TextButton(
+                              //               child: Text("Close"),
+                              //               onPressed: () {
+                              //                 Navigator.of(context).pop();
+                              //               },
+                              //             ),
+                              //           ],
+                              //         );
+                              //       },
+                              //     )
+                              //   }
+                              // else
+                              //   {
+                              print(snapshot.docs[0].id),
+                              globals.name = snapshot.docs[0].data()['name'],
+                              globals.email = snapshot.docs[0].data()['email'],
+                              globals.coin = snapshot.docs[0].data()['coin'],
+                              globals.id = snapshot.docs[0].id,
+                              globals.address =
+                                  snapshot.docs[0].data()['address'],
+                              globals.isLoggedIn = true
+                              // Navigator.pushNamed(context, "Home")
+                            })
+                        .catchError((error) => {
+                              print(error),
+                              globals.isLoggedIn = false,
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("Error"),
+                                    content: Text("Invalid email or password"),
+                                    actions: [
+                                      TextButton(
+                                        child: Text("Close"),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              )
+                            });
+                    if (globals.isLoggedIn) {
+                      Navigator.pushNamed(context, "home");
+                    }
                   },
                   child: Text(
                     'Sign in',

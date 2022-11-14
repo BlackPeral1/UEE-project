@@ -1,53 +1,56 @@
 import 'package:clippy_flutter/arc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:first_project/pages/MapPage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const List<String> list = <String>['Small', 'Medium', 'large'];
 
-class ReqDetailsPage extends StatefulWidget {
-  String company;
-  ReqDetailsPage({this.company = ''});
-
-  @override
-  _ReqDetailsPageState createState() => _ReqDetailsPageState();
-}
-
-class _ReqDetailsPageState extends State<ReqDetailsPage> {
-  String dropdownValue = list.first;
-  TextEditingController note = TextEditingController();
+class EditReqDetailsPage extends StatefulWidget {
+  var id;
+  String size = 'Small';
+  String note = '';
   bool plastic = false;
   bool glass = false;
   bool metal = false;
+  EditReqDetailsPage(
+      {this.id = '',
+      this.note = '',
+      this.plastic = false,
+      this.glass = false,
+      this.metal = false,
+      this.size = 'Small'});
+
+  @override
+  _EditReqDetailsPageState createState() => _EditReqDetailsPageState();
+}
+
+class _EditReqDetailsPageState extends State<EditReqDetailsPage> {
+  TextEditingController note = TextEditingController();
+
+  void initState() {
+    super.initState();
+    note = new TextEditingController(text: widget.note);
+  }
 
   @override
   Widget build(BuildContext context) {
-    String company = widget.company;
-
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Edit Request"),
+        backgroundColor: Color(0xFF69B289),
+        centerTitle: true,
+      ),
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Container(
           height: 700,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/reqbg.png"),
-              alignment: Alignment.topCenter,
-            ),
-          ),
           child: ListView(
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 60, left: 20, bottom: 30),
-                child: const Text("Fill in the details ",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black)),
-              ),
               Container(
                 margin: const EdgeInsets.only(top: 20, left: 20),
                 child: Text("Size", style: TextStyle(fontSize: 16)),
@@ -64,10 +67,10 @@ class _ReqDetailsPageState extends State<ReqDetailsPage> {
                 ),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton(
-                    value: dropdownValue,
+                    value: widget.size,
                     onChanged: (String? value) {
                       setState(() {
-                        dropdownValue = value!;
+                        widget.size = value!;
                       });
                     },
                     items: list.map<DropdownMenuItem<String>>((String value) {
@@ -107,10 +110,10 @@ class _ReqDetailsPageState extends State<ReqDetailsPage> {
               ),
               CheckboxListTile(
                 title: Text("Plastic"),
-                value: plastic,
+                value: widget.plastic,
                 onChanged: (bool? newValue) {
                   setState(() {
-                    plastic = newValue!;
+                    widget.plastic = newValue!;
                   });
                 },
                 controlAffinity:
@@ -118,10 +121,10 @@ class _ReqDetailsPageState extends State<ReqDetailsPage> {
               ),
               CheckboxListTile(
                 title: Text("Glass"),
-                value: glass,
+                value: widget.glass,
                 onChanged: (bool? newValue) {
                   setState(() {
-                    glass = newValue!;
+                    widget.glass = newValue!;
                   });
                 },
                 controlAffinity:
@@ -129,10 +132,10 @@ class _ReqDetailsPageState extends State<ReqDetailsPage> {
               ),
               CheckboxListTile(
                 title: Text("Metal"),
-                value: metal,
+                value: widget.metal,
                 onChanged: (bool? newValue) {
                   setState(() {
-                    metal = newValue!;
+                    widget.metal = newValue!;
                   });
                 },
                 controlAffinity:
@@ -151,24 +154,31 @@ class _ReqDetailsPageState extends State<ReqDetailsPage> {
                         horizontal: 15.0, vertical: 12), // background
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MapPage(
-                          size: dropdownValue,
-                          note: note.text,
-                          plastic: plastic,
-                          glass: glass,
-                          metal: metal,
-                          company: company,
-                        ),
-                      ),
+                    editRequest();
+                    Fluttertoast.showToast(
+                      msg: "Updated Successful",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
                     );
+                    Navigator.pop(context, true);
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => MapPage(
+                    //       size: dropdownValue,
+                    //       note: note.text,
+                    //       plastic: plastic,
+                    //       glass: glass,
+                    //       metal: metal,
+                    //       company: company,
+                    //     ),
+                    //   ),
+                    // );
 
                     // Navigator.pushNamed(context, "mapPage");
                   },
                   child: Text(
-                    'Next',
+                    'Update',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -177,15 +187,20 @@ class _ReqDetailsPageState extends State<ReqDetailsPage> {
           ),
         ),
       ),
-      bottomNavigationBar: TextButton(
-        style: TextButton.styleFrom(
-          primary: Color(0xFF69B289), // foreground
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, "requestPage");
-        },
-        child: Text('Change Company'),
-      ),
     );
+  }
+
+  Future<void> editRequest() async {
+    final doc =
+        FirebaseFirestore.instance.collection('requests').doc(widget.id);
+    final json = {
+      'size': widget.size,
+      'note': widget.note,
+      'plastic': widget.plastic,
+      'glass': widget.glass,
+      'metal': widget.metal,
+    };
+
+    await doc.update(json);
   }
 }

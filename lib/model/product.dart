@@ -1,4 +1,5 @@
 class ProductModel {
+  late String id;
   late String name;
   late String code;
   late String image;
@@ -8,6 +9,7 @@ class ProductModel {
   late String description;
 
   ProductModel({
+    required this.id,
     required this.name,
     required this.code,
     required this.image,

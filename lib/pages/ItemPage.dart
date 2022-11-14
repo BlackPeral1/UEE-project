@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clippy_flutter/arc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,17 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../widgets/ItemAppBar.dart';
 import '../widgets/ItemsBottomNavBar.dart';
 
-class ItemPage extends StatelessWidget {
+class ItemPage extends StatefulWidget {
+  final item;
+
+  ItemPage({this.item});
+
+  @override
+  _ItemPageState createState() => _ItemPageState();
+}
+
+class _ItemPageState extends State<ItemPage> {
+  int qty = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,11 +28,12 @@ class ItemPage extends StatelessWidget {
         children: [
           ItemAppBar(),
           Padding(
-              padding: EdgeInsets.all(16),
-              child: Image.asset(
-                "images/1.png",
-                height: 200,
-              )),
+            padding: EdgeInsets.all(16),
+            child: CachedNetworkImage(
+              imageUrl: widget.item['image'],
+              height: 200,
+            ),
+          ),
           Container(
               height: 400,
               child: Container(
@@ -41,7 +54,7 @@ class ItemPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "\$120",
+                              "\$${widget.item['price']}",
                               style: TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
@@ -49,29 +62,36 @@ class ItemPage extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      color: PRIMARY_COLOR,
-                                      borderRadius: BorderRadius.circular(5),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 3,
-                                          blurRadius: 10,
-                                          offset: Offset(0, 3),
-                                        ),
-                                      ]),
-                                  child: Icon(
-                                    CupertinoIcons.plus,
-                                    size: 18,
-                                    color: Colors.white,
+                                InkWell(
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        color: PRIMARY_COLOR,
+                                        borderRadius: BorderRadius.circular(5),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 3,
+                                            blurRadius: 10,
+                                            offset: Offset(0, 3),
+                                          ),
+                                        ]),
+                                    child: Icon(
+                                      CupertinoIcons.plus,
+                                      size: 18,
+                                      color: Colors.white,
+                                    ),
                                   ),
+                                  onTap: () {
+                                    setState(() {
+                                      qty++;
+                                    });
+                                  },
                                 ),
                                 Container(
                                   margin: EdgeInsets.symmetric(horizontal: 10),
                                   child: Text(
-                                    "1",
+                                    qty.toString(),
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -79,24 +99,33 @@ class ItemPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      color: PRIMARY_COLOR,
-                                      borderRadius: BorderRadius.circular(5),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 3,
-                                          blurRadius: 10,
-                                          offset: Offset(0, 3),
-                                        ),
-                                      ]),
-                                  child: Icon(
-                                    CupertinoIcons.minus,
-                                    size: 18,
-                                    color: Colors.white,
+                                InkWell(
+                                  child: Container(
+                                    padding: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        color: PRIMARY_COLOR,
+                                        borderRadius: BorderRadius.circular(5),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 3,
+                                            blurRadius: 10,
+                                            offset: Offset(0, 3),
+                                          ),
+                                        ]),
+                                    child: Icon(
+                                      CupertinoIcons.minus,
+                                      size: 18,
+                                      color: Colors.white,
+                                    ),
                                   ),
+                                  onTap: () {
+                                    setState(() {
+                                      if (qty > 1) {
+                                        qty--;
+                                      }
+                                    });
+                                  },
                                 ),
                               ],
                             )
@@ -106,7 +135,7 @@ class ItemPage extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.symmetric(vertical: 12),
                           child: Text(
-                            "Arduino UNO REV3 [A000066]",
+                            widget.item['name'],
                             style: TextStyle(
                                 fontSize: 17,
                                 color: Colors.black,
@@ -115,25 +144,7 @@ class ItemPage extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.symmetric(vertical: 0),
                           child: Text(
-                            "Thi is moredetailed ",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.black,
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 0),
-                          child: Text(
-                            "Thi is moredetailed ",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.black,
-                            ),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 0),
-                          child: Text(
-                            "Thi is moredetailed ",
+                            widget.item['description'],
                             style: TextStyle(
                               fontSize: 17,
                               color: Colors.black,
@@ -148,6 +159,7 @@ class ItemPage extends StatelessWidget {
                                   children: [
                                     ElevatedButton(
                                       onPressed: () {
+                                        addCart();
                                         Navigator.pushNamed(
                                             context, "cartPage");
                                       },
@@ -210,5 +222,18 @@ class ItemPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> addCart() async {
+    final doc = FirebaseFirestore.instance.collection('cart').doc();
+    final json = {
+      'name': widget.item['name'],
+      'price': widget.item['price'],
+      'image': widget.item['image'],
+      'qty': qty,
+      'created': Timestamp.now()
+    };
+
+    await doc.set(json);
   }
 }

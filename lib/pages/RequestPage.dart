@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_project/pages/ReqDetailsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
+import 'RequestsListPage.dart';
 
 class RequestPage extends StatefulWidget {
   @override
@@ -13,6 +16,7 @@ class RequestPage extends StatefulWidget {
 class RequestPageState extends State<RequestPage> {
   var currentIndex = 2;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,12 +35,40 @@ class RequestPageState extends State<RequestPage> {
           child: ListView(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 60, left: 20, bottom: 30),
-                child: const Text("Company List",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.black)),
+                margin: const EdgeInsets.only(top: 60, left: 20, right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Company List",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: Color(0xFF69B289),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(18)),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 15.0), // foreground
+                      ),
+                      onPressed: () {
+                        // Navigator.pushNamed(context, "reqDetailsPage");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RequestsListPage(),
+                          ),
+                        );
+                      },
+                      child: Text('Arrange request'),
+                    ),
+                  ],
+                ),
               ),
               Container(
                   margin: EdgeInsets.symmetric(
@@ -162,7 +194,14 @@ class RequestPageState extends State<RequestPage> {
                                   horizontal: 15.0), // foreground
                             ),
                             onPressed: () {
-                              Navigator.pushNamed(context, "reqDetailsPage");
+                              // Navigator.pushNamed(context, "reqDetailsPage");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ReqDetailsPage(
+                                      company: '1234',
+                                    ),
+                                  ));
                             },
                             child: Text('Arrange request'),
                           )

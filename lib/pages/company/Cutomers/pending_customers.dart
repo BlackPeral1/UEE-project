@@ -16,16 +16,19 @@ class _PendingCustomersState extends State<PendingCustomers> {
         name: 'Chamath Jayasekara',
         email: 'chmathjaya@gmail.com',
         address: '200,Perera Road,Malabe',
+        coin: '0',
         status: 'pending'),
     CustomerModel(
         name: 'Chamath Jayasekara',
         email: 'chmathjaya@gmail.com',
         address: '200,Perera Road,Malabe',
+        coin: '0',
         status: 'pending'),
     CustomerModel(
         name: 'Chamath Jayasekara',
         email: 'chmath@gmail.com',
         address: '200,Perera Road,Malabe',
+        coin: '0',
         status: 'pending'),
   ];
   var currentIndex = 2;
@@ -233,6 +236,7 @@ class _PendingCustomersState extends State<PendingCustomers> {
           name: customer_list[index].name,
           email: customer_list[index].email,
           address: customer_list[index].address,
+          coin: customer_list[index].coin,
           status: customer_list[index].status),
     );
   }

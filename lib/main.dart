@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+
 import 'package:first_project/pages/ItemComparePage.dart';
 import 'package:first_project/pages/ItemPage.dart';
 import 'package:first_project/pages/ProductPage.dart';
@@ -27,7 +29,9 @@ import 'package:first_project/pages/company/Cutomers/approved_customers.dart';
 import 'package:first_project/pages/company/Cutomers/generateReport.dart';
 import 'package:first_project/pages/company/Cutomers/declined_customers.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -41,11 +45,11 @@ class MyApp extends StatelessWidget {
         "/": (context) => SpalshPage(),
         "home": (context) => HomePage(),
         "cartPage": (context) => CartPage(),
-        "itemPage": (context) => ItemPage(),
+        // "itemPage": (context) => ItemPage(),
         "productPage": (context) => ProductPage(),
         "requestPage": (context) => RequestPage(),
-        "reqDetailsPage": (context) => ReqDetailsPage(),
-        "mapPage": (context) => MapPage(),
+        // "reqDetailsPage": (context) => ReqDetailsPage(),
+        // "mapPage": (context) => MapPage(),
         "loginPage": (context) => LoginPage(),
         "registerPage": (context) => RegisterPage(),
         "accountPage": (context) => AccountPage(),

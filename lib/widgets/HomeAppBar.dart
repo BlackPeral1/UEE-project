@@ -1,9 +1,11 @@
 import 'package:badges/badges.dart';
 import 'package:first_project/constants.dart';
 import 'package:flutter/material.dart';
+import '../pages/globals.dart' as globals;
 
 class HomeAppBar extends StatelessWidget {
   // This widget is the root of your application.
+  final coin = globals.coin;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +23,7 @@ class HomeAppBar extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       bottomLeft: Radius.circular(20))),
               child: Text(
-                "Coin 120",
+                "Coin $coin",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,

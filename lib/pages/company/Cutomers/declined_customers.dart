@@ -16,16 +16,19 @@ class _DeclinedCustomersState extends State<DeclinedCustomers> {
         name: 'Chamath Jayasekara',
         email: 'chmathjaya@gmail.com',
         address: '200,Perera Road,Malabe',
+        coin: '0',
         status: 'Declined'),
     CustomerModel(
         name: 'Chamath Jayasekara',
         email: 'chmathjaya@gmail.com',
         address: '200,Perera Road,Malabe',
+        coin: '0',
         status: 'Declined'),
     CustomerModel(
         name: 'Chamath Jayasekara',
         email: 'chmath@gmail.com',
         address: '200,Perera Road,Malabe',
+        coin: '0',
         status: 'Declined'),
   ];
 
@@ -235,6 +238,7 @@ class _DeclinedCustomersState extends State<DeclinedCustomers> {
           name: customer_list[index].name,
           email: customer_list[index].email,
           address: customer_list[index].address,
+          coin: customer_list[index].coin,
           status: customer_list[index].status),
     );
   }

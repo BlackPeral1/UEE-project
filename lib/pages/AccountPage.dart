@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
+import 'Profile.dart';
+import 'globals.dart' as globals;
 
 class AccountPage extends StatefulWidget {
   @override
@@ -11,6 +13,8 @@ class AccountPage extends StatefulWidget {
 }
 
 class AccountPageState extends State<AccountPage> {
+  final name = globals.name;
+  final email = globals.email;
   var currentIndex = 3;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   // This widget is the root of your application.
@@ -59,8 +63,8 @@ class AccountPageState extends State<AccountPage> {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Name : Devid Smith",
+                      child:  Text(
+                        "Name :"+name,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                         textAlign: TextAlign.left,
@@ -69,8 +73,8 @@ class AccountPageState extends State<AccountPage> {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Email : devid@gmail.com",
+                      child:  Text(
+                        "Email : $email",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                         textAlign: TextAlign.left,
@@ -89,7 +93,12 @@ class AccountPageState extends State<AccountPage> {
                               horizontal: 15.0), // foreground
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, "");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Profile(),
+                            ),
+                          );
                         },
                         child: Text('Update Profile'),
                       ),

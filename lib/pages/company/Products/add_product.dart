@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
@@ -10,6 +12,14 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   final _formKey = GlobalKey<FormState>();
   var currentIndex = 0;
+
+  TextEditingController name = TextEditingController();
+  TextEditingController code = TextEditingController();
+  TextEditingController image = TextEditingController();
+  TextEditingController category = TextEditingController();
+  TextEditingController subcategory = TextEditingController();
+  TextEditingController price = TextEditingController();
+  TextEditingController description = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
@@ -21,7 +31,9 @@ class _AddProductState extends State<AddProduct> {
         actions: [
           IconButton(
             icon: const Icon(Icons.person),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, "/");
+            },
           ),
         ],
       ),
@@ -48,6 +60,7 @@ class _AddProductState extends State<AddProduct> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: name,
                   decoration: const InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -70,6 +83,7 @@ class _AddProductState extends State<AddProduct> {
                   maxLines: 10,
                 ),
                 TextFormField(
+                  controller: code,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
@@ -89,6 +103,7 @@ class _AddProductState extends State<AddProduct> {
                   maxLines: 10,
                 ),
                 TextFormField(
+                  controller: image,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
@@ -108,6 +123,7 @@ class _AddProductState extends State<AddProduct> {
                   maxLines: 10,
                 ),
                 TextFormField(
+                  controller: category,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
@@ -127,6 +143,7 @@ class _AddProductState extends State<AddProduct> {
                   maxLines: 10,
                 ),
                 TextFormField(
+                  controller: subcategory,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
@@ -146,6 +163,7 @@ class _AddProductState extends State<AddProduct> {
                   maxLines: 10,
                 ),
                 TextFormField(
+                  controller: price,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
@@ -165,6 +183,7 @@ class _AddProductState extends State<AddProduct> {
                   maxLines: 10,
                 ),
                 TextFormField(
+                  controller: description,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.green)),
@@ -186,7 +205,18 @@ class _AddProductState extends State<AddProduct> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      addProduct();
+                      Fluttertoast.showToast(
+                        msg: "Added Successful",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                      );
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => super.widget));
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.green),
                     ),
@@ -335,4 +365,20 @@ class _AddProductState extends State<AddProduct> {
     'Customers',
     'Report',
   ];
+
+  Future<void> addProduct() async {
+    final doc = FirebaseFirestore.instance.collection('products').doc();
+    final json = {
+      'name': name.text,
+      'code': code.text,
+      'image': image.text,
+      'category': category.text,
+      'subcategory': subcategory.text,
+      'price': price.text,
+      'description': description.text,
+      'created': Timestamp.now()
+    };
+
+    await doc.set(json);
+  }
 }

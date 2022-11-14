@@ -2,6 +2,8 @@ import 'package:first_project/constants.dart';
 import 'package:flutter/material.dart';
 
 class CartBottomNavBar extends StatelessWidget {
+  var total = 0;
+  CartBottomNavBar({this.total = 0});
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -22,7 +24,7 @@ class CartBottomNavBar extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text("\$250",
+                Text("\$$total",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,

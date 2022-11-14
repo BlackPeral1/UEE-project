@@ -2,8 +2,7 @@ import 'package:clippy_flutter/arc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_map/flutter_map.dart'; // Suitable for most situations
-import 'package:flutter_map/plugin_api.dart'; // Only import if required functionality is not exposed by default
+// Only import if required functionality is not exposed by default
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../widgets/Map.dart';

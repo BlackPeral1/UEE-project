@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_project/pages/company/Products/update_product.dart';
 import 'package:flutter/material.dart';
 
 import '../../../model/product.dart';
@@ -11,6 +13,7 @@ class ProductItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String _id = product.id;
     String _name = product.name;
     String _code = product.code;
     String _image = product.image;
@@ -135,13 +138,29 @@ class ProductItemTile extends StatelessWidget {
                         child: Row(
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UpdateProduct(
+                                      id: _id,
+                                      name: _name,
+                                      code: _code,
+                                      image: _image,
+                                      category: _category,
+                                      subcategory: _subcategory,
+                                      price: _price,
+                                      description: _description,
+                                    ),
+                                  ),
+                                );
+                              },
                               icon: const Icon(Icons.edit,
                                   size: 20, color: Colors.black),
                             ),
                             IconButton(
                               onPressed: () {
-                                showAlertDialog(context);
+                                showAlertDialog(context, _id);
                               },
                               icon: const Icon(Icons.delete,
                                   size: 20, color: Colors.black),
@@ -175,21 +194,25 @@ class ProductItemTile extends StatelessWidget {
   }
 }
 
-showAlertDialog(BuildContext context) {
+showAlertDialog(BuildContext context, id) {
   // set up the buttons
   Widget cancelButton = TextButton(
     child: Text("Cancel"),
-    onPressed: () {},
+    onPressed: () {
+      Navigator.pop(context);
+    },
   );
   Widget continueButton = TextButton(
     child: Text("Delete"),
     onPressed: () {
+      final doc = FirebaseFirestore.instance.collection('products').doc(id);
+      doc.delete();
       Fluttertoast.showToast(
         msg: "Deleted Successful",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
       );
-      Navigator.pushNamed(context, "productlist");
+      Navigator.pop(context);
     },
   );
 
