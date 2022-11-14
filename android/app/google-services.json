@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606348379586",
+    "project_id": "redivivus-app",
+    "storage_bucket": "redivivus-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606348379586:android:7922815a33d0c040f7825b",
+        "android_client_info": {
+          "package_name": "com.example.first_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606348379586-tso00l2gj42gmuagmulrprkhgj6c8kfq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7yJKobRkYcjfnANz834Rda5SeSt-Ximg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606348379586-tso00l2gj42gmuagmulrprkhgj6c8kfq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

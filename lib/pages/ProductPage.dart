@@ -1,69 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:first_project/widgets/HomeAppBar.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/CategoriesWidget.dart';
 import '../widgets/ItemsWidget.dart';
+import '../widgets/ProductAppBar.dart';
 
-import '../constants.dart';
-import 'globals.dart' as globals;
-class HomePage extends StatefulWidget {
+class ProductPage extends StatefulWidget {
   @override
-  HomePageState createState() => HomePageState();
+  ProductPageState createState() => ProductPageState();
 }
 
-class HomePageState extends State<HomePage> {
-  final coin = globals.coin;
-  var currentIndex = 0;
+class ProductPageState extends State<ProductPage> {
+  var currentIndex = 1;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          height: 700,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("images/homebg.png"),
-              alignment: Alignment.topCenter,
+      body: ListView(
+        children: [
+          ProductAppBar(),
+          Container(
+            // height: 500,
+            padding: EdgeInsets.only(top: 15),
+            decoration: BoxDecoration(
+              color: Color(0xFFEDECF2),
             ),
-          ),
-          child: ListView(
-            children: [
-              HomeAppBar(),
-              Container(
-                // height: 500,
-                padding: EdgeInsets.only(top: 15),
-                decoration: BoxDecoration(color: Color(0xFFEDECF2)),
-                child: Column(
-                  children: [
-                    // Categories
-                    CategoriesWidget(),
-                    //Items
-                    Container(
-                        alignment: Alignment.centerLeft,
-                        margin:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Propular Items",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: Colors.black)),
-                            ])),
-                    //Items widget
-                    ItemsWidget()
-                  ],
+            child: Column(
+              children: [
+                //Search widget
+
+                //Categories
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 0,
+                    horizontal: 10,
+                  ),
                 ),
-              )
-            ],
-          ),
-        ),
+                // Categories
+                CategoriesWidget(),
+                //Items
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                ),
+                //Items widget
+                ItemsWidget()
+              ],
+            ),
+          )
+        ],
       ),
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .05),
@@ -96,7 +84,6 @@ class HomePageState extends State<HomePage> {
                 } else if (currentIndex == 3) {
                   Navigator.pushNamed(context, "accountPage");
                 }
-
                 // HapticFeedback.lightImpact();
               });
             },
