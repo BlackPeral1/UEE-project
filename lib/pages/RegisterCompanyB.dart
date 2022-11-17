@@ -127,6 +127,7 @@ class RegisterCompanyB extends StatelessWidget {
                       width: 0.80),
                 ),
                 child: TextFormField(
+                  obscureText: true,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Password',

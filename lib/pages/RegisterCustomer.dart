@@ -124,6 +124,7 @@ class RegisterCustomer extends StatelessWidget {
                       width: 0.80),
                 ),
                 child: TextFormField(
+                  obscureText: true,
                   controller: password,
                   decoration: const InputDecoration(
                     border: InputBorder.none,

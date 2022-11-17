@@ -63,8 +63,8 @@ class AccountPageState extends State<AccountPage> {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       alignment: Alignment.centerLeft,
-                      child:  Text(
-                        "Name :"+name,
+                      child: Text(
+                        "Name :" + name,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                         textAlign: TextAlign.left,
@@ -73,7 +73,7 @@ class AccountPageState extends State<AccountPage> {
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       alignment: Alignment.centerLeft,
-                      child:  Text(
+                      child: Text(
                         "Email : $email",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
@@ -204,9 +204,18 @@ class AccountPageState extends State<AccountPage> {
                         horizontal: 15.0), // foreground
                   ),
                   onPressed: () {
+                    globals.isLoggedIn = false;
+                    globals.id = "";
+                    globals.name = "";
+                    globals.email = "";
+                    globals.address = "";
+                    globals.coin = "";
                     Navigator.pushNamed(context, "/");
                   },
-                  child: Text('Logout'),
+                  child: Text(
+                    'Logout',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
               )
             ],
