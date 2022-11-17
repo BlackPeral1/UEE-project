@@ -65,7 +65,7 @@ class RequestPageState extends State<RequestPage> {
                           ),
                         );
                       },
-                      child: Text('Arrange request'),
+                      child: Text('Request List'),
                     ),
                   ],
                 ),
@@ -128,7 +128,13 @@ class RequestPageState extends State<RequestPage> {
                                   horizontal: 15.0), // foreground
                             ),
                             onPressed: () {
-                              Navigator.pushNamed(context, "reqDetailsPage");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ReqDetailsPage(
+                                      company: 'Casella Waste Systems',
+                                    ),
+                                  ));
                             },
                             child: Text('Arrange request'),
                           )
@@ -199,7 +205,7 @@ class RequestPageState extends State<RequestPage> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => ReqDetailsPage(
-                                      company: '1234',
+                                      company: 'Good Trash Systems',
                                     ),
                                   ));
                             },

@@ -23,10 +23,10 @@ class _ProfileState extends State<Profile> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     name.text = globals.name;
     address.text = globals.address;
     email.text = globals.email;
+    super.initState();
   }
 
   @override
@@ -207,6 +207,9 @@ class _ProfileState extends State<Profile> {
       'created': Timestamp.now()
     };
 
+    globals.name = name.text;
+    globals.address = address.text;
+    globals.email = email.text;
     await doc.update(json);
   }
 }
